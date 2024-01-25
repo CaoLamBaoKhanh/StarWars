@@ -38,7 +38,7 @@ class StarWars extends Component {
     return(
       <TouchableHighlight
         onPress={()=>this.nagivate(item.title)}
-        style={styles.item,{borderTopWidth:index === 0 ? 1 :null}}
+        style={[styles.item,{borderTopWidth:index === 0 ? 1 :null}]}
       >
         <Text style={styles.text}>{item.title}</Text>
       </TouchableHighlight>
@@ -62,7 +62,7 @@ class StarWars extends Component {
 const App = createStackNavigator({
   StarWar: {
     screen: StarWars
-  }
+  },
   People: {
     screen: People
   }
