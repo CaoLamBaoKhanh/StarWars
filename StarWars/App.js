@@ -10,7 +10,7 @@ import { createStackNavigator } from 'react-navigation';
 import Container from './Container'
 import People from './People'
 
-cons links = [
+const links = [
   {title:'People'},
   {title:'Films'},
   {title:'StarShips'},
@@ -18,3 +18,66 @@ cons links = [
   {title:'Species'},
   {title:'Planets'},
 ]
+
+class StarWars extends Component {
+  static navigation = {
+
+    headerTitle: <Text
+      style={{
+        fontSize:34, color:  'rgb(255,232,31)' 
+      }}  
+    > Star Wars</Text>,
+    headerStyle: { backgroudColor: "black",height: 110}
+  }
+  nagivate=(link)=>{
+    const {navigate} = this.props.navigation
+    navigate(link)
+  }
+
+  renderItem = ({item, index})=>{
+    return(
+      <TouchableHighlight
+        onPress={()=>this.nagivate(item.title)}
+        style={styles.item,{borderTopWidth:index === 0 ? 1 :null}}
+      >
+        <Text style={styles.text}>{item.title}</Text>
+      </TouchableHighlight>
+    )
+  }
+
+  render(){
+    return(
+      <Container>
+        <FlatList
+          data={links}
+          keyExtractor={(item)=>item.title}
+          renderItem={this.renderItem}
+        >
+        </FlatList>
+      </Container>
+    )
+  }
+}
+
+const App = createStackNavigator({
+  StarWar: {
+    screen: StarWars
+  }
+  People: {
+    screen: People
+  }
+})
+const styles = StyleSheet.create({
+  item: {
+  padding: 20,
+  justifyContent: 'center',
+  borderColor: 'rgba(255,232,31, .2)',
+  borderBottomWidth: 1
+  },
+  text: {
+  color: '#ffe81f',
+  fontSize: 18
+  }
+ });
+
+ export default StarWars;
