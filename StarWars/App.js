@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import {
+ StyleSheet,
+ Text,
+ FlatList,
+ TouchableHighlight
+} from 'react-native';
+import { createStackNavigator } from 'react-navigation';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import Container from './Container'
+import People from './People'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+cons links = [
+  {title:'People'},
+  {title:'Films'},
+  {title:'StarShips'},
+  {title:'Vehicles'},
+  {title:'Species'},
+  {title:'Planets'},
+]
